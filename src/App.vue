@@ -5,12 +5,15 @@
 </template>
 
 <script>
+
 export default {
   name: 'App'
 }
 </script>
 
 <style>
+@import 'styles/app.sass'
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

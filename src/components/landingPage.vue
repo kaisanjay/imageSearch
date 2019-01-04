@@ -1,7 +1,7 @@
 <template>
   <div>
-     <div v-for="a in unsplashData">
-         <img :src="a.urls.thumb">
+     <div v-for="a in unsplashData" class="test">
+         <img :src="a.urls.small">
      </div>
   </div>
 </template>
@@ -26,6 +26,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="sass">
+
+@import '../styles/app.sass'
+
 
 </style>
