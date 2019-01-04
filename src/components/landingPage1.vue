@@ -1,24 +1,6 @@
 <template>
   <div>
-    <div class="landingPage--title">
-      <h1>Pre<span style="color: grey;">TT</span>y<span style="font-weight: 400; color: grey;">images</span></h1>
-    </div>
-    <div class="landingPage__hero">
-      <div class="newsletter">
-        <input type="text"
-        v-model="userInput"
-        id="emailInput"
-        @keyup.enter="search"
-        placeholder="Search photos">
-        <button @click="search">
-          Sign Up
-        </button>
-      </div>
-    </div>
-
-     <div v-for="a in unsplashData" class="container">
-         <img :src="a.urls.small" class="image-card">
-     </div>
+    <h3>hello</h3>
   </div>
 </template>
 
