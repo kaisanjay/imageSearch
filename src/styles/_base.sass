@@ -95,4 +95,23 @@ h4
       color: $theme-color !important
 
 .container
-  margin: 0 10em
+  margin: 0 30em
+
+@keyframes sheen
+  100%
+    transform: rotateZ(60deg) translate(0, -4em)
+.shinyBtn
+  position: relative
+  overflow: hidden
+  margin: 0.3em 1em
+  color: inherit
+  &:after
+    animation: sheen 6s infinite
+    content: ''
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255, 0.5) 50%, transparent)
+    transform: rotateZ(60deg) translate(-1em, 4em)

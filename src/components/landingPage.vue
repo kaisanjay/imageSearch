@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="landingPage--title">
+    <div class="landingPage--title shinyBtn">
       <h1>Pre<span style="color: grey;">TT</span>y<span style="font-weight: 400; color: grey;">images</span></h1>
     </div>
     <div class="landingPage__hero">
@@ -15,18 +15,53 @@
         </button>
       </div>
     </div>
+    <div class="pi-tabs">
+      <button class="pi-tabs__btn" id="tpBtn" @click="showTab">Popular</button>
+      <buttton class="pi-tabs__btn" id="saBtn" @click="showTab">Nature</buttton>
+      <buttton class="pi-tabs__btn" id="saBtn" @click="showTab">Weather</buttton>
+      <buttton class="pi-tabs__btn" id="saBtn" @click="showTab">Animals</buttton>
+    </div>
 
-     <div v-for="a in unsplashData" class="container">
-         <img :src="a.urls.small" class="image-card">
-     </div>
+    <div class="container">
+      <div v-for="a in unsplashData">
+        <img :src="a.urls.small" class="image-card">
+      </div>
+    </div>
   </div>
 </template>
+
+<style lang="sass">
+@import '../styles/app.sass'
+.pi-tabs
+  display: flex
+  justify-content: center
+  margin-bottom: 4%
+  &__btn
+    display: block
+    font-size: 1.3em
+    cursor: pointer
+    padding: 12px 16px
+    font-weight: bold
+    outline: 0
+    border: none
+    border-bottom: 2px solid transparent
+    background-color: transparent
+    &:hover
+      border-bottom: 2px solid #cccccc
+.vw-tabs__active
+  font-weight: 900
+  color: #7F44D3
+  border-bottom: 2px solid #7F44D3
+  &:hover
+    border-bottom: 2px solid #7F44D3
+
+</style>
 
 <script>
 import axios from 'axios'
 
 export default {
-  name: 'HelloWorld',
+  name: 'landingPage',
   data () {
     return {
       unsplashData: [],
@@ -48,13 +83,16 @@ export default {
         console.log(response.data)
         this.unsplashData = response.data
       })
+    },
+
+    showTab (event) {
+      let query = event.currentTarget.textContent
+      this.unsplashData = null
+      axios.get('https://api.unsplash.com/photos/search/?query=' + query + '&client_id=' + this.clientId).then(response => {
+        this.unsplashData = response.data
+      })
     }
   }
 }
 </script>
 
-<style lang="sass">
-@import '../styles/app.sass'
-
-
-</style>
