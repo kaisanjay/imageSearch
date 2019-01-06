@@ -9,6 +9,9 @@
           <p><b>Location:</b>&nbsp;&nbsp;{{ a.user.location }}</p>
         </div>
       </div>
+      <div v-if="unsplashData.length === 0">
+        <h4 style="text-align: center;"><b>No Results Found</b></h4>
+      </div>
     </div>
   </div>
 </template>
@@ -32,7 +35,6 @@ export default {
   created () {
     let gthis = this
     bus.$on('images', (data) => {
-      console.log(data, 'sanjay')
       gthis.unsplashData = data
     })
   },

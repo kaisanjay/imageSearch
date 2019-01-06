@@ -32,7 +32,7 @@ export default {
     }
   },
 
-  created () {
+  beforeCreate () {
     axios.get('https://api.unsplash.com/photos/?client_id=' + this.clientId).then(response => {
       this.unsplashData = response.data
     })

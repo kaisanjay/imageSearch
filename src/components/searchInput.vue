@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="newsletter">
+    <div class="searchBar">
       <input type="text"
       v-model="userInput"
       id="userInputId"
@@ -34,7 +34,7 @@ export default {
     search (event) {
       this.unsplashData = null
 
-      axios.get('https://api.unsplash.com/photos/search/?query=' + this.userInput + '&client_id=' + this.clientId).then(response => {
+      axios.get('https://api.unsplash.com/photos/search/?query=' + this.userInput + '&client_id=' + this.clientId).then( response => {
         bus.$emit('images', response.data)
         // window.location.href = '/search-page'
 

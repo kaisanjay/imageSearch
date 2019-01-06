@@ -1,11 +1,10 @@
 <template>
   <div>
-    <div class="landingPage--title shinyBtn" onclick="window.location='/'">
-      <h1>Pre<span style="color: grey;">TT</span>y<span style="font-weight: 400; color: grey;">images</span></h1>
-    </div>
-    <div class="landingPage__hero">
+    <homeIcon></homeIcon>
+    <div class="hero">
       <searchInput></searchInput>
     </div>
+    <!-- pi = pretty image -->
     <div class="pi-tabs">
       <button class="pi-tabs__btn" id="popular-Btn" @click="showTab">Popular</button>
       <button class="pi-tabs__btn" id="saBtn" @click="showTab">Nature</button>
@@ -34,6 +33,8 @@
     border: none
     border-bottom: 2px solid transparent
     background-color: transparent
+    +bp($break-580)
+      font-size: 1em
     &:hover
       border-bottom: 2px solid #cccccc
 .pi-tabs__active
@@ -46,6 +47,7 @@
 </style>
 
 <script>
+import homeIcon from '@/components/homeIcon.vue'
 import searchInput from '@/components/searchInput.vue'
 import searchResults from '@/components/searchResults.vue'
 import axios from 'axios'
@@ -55,7 +57,8 @@ export default {
   name: 'home',
   components: {
     searchInput,
-    searchResults
+    searchResults,
+    homeIcon
   },
   data () {
     return {
