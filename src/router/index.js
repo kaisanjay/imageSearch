@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import landingPage from '@/components/landingPage'
+import home from '@/views/home'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
-      name: 'landingPage',
-      component: landingPage
+      name: 'home',
+      component: home
+    },
+    {
+      path: '/search-page',
+      name: 'searchPage',
+      component: () => import(/* webpackChunkName: "about" */ '../views/searchPage.vue'),
     }
   ]
 })

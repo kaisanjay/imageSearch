@@ -1,0 +1,42 @@
+<template>
+  <div>
+    <div class="landingPage--title shinyBtn" onclick="window.location='/'">
+      <h1>Pre<span style="color: grey;">TT</span>y<span style="font-weight: 400; color: grey;">images</span></h1>
+    </div>
+    <searchInput></searchInput>
+  </div>
+</template>
+
+<style lang="sass">
+@import '../styles/app.sass'
+
+</style>
+
+<script>
+import axios from 'axios'
+import searchInput from '@/components/searchInput.vue';
+
+export default {
+  name: 'searchPage',
+  components: {
+    searchInput
+  },
+  data () {
+    return {
+      unsplashData: [],
+      userInput: null,
+      clientId: '5f39d0a9e6755434f948e418ab5ce36ae00b133409a4b988c59a633ddbe594ba'
+    }
+  },
+
+  created () {
+    axios.get('https://api.unsplash.com/photos/?client_id=' + this.clientId).then(response => {
+      this.unsplashData = response.data
+    })
+  },
+
+  methods: {
+  }
+}
+</script>
+

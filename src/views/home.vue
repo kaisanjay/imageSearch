@@ -1,19 +1,10 @@
 <template>
   <div>
-    <div class="landingPage--title shinyBtn">
+    <div class="landingPage--title shinyBtn" onclick="window.location='/'">
       <h1>Pre<span style="color: grey;">TT</span>y<span style="font-weight: 400; color: grey;">images</span></h1>
     </div>
     <div class="landingPage__hero">
-      <div class="newsletter">
-        <input type="text"
-        v-model="userInput"
-        id="emailInput"
-        @keyup.enter="search"
-        placeholder="Search photos">
-        <button @click="search">
-          Sign Up
-        </button>
-      </div>
+      <searchInput></searchInput>
     </div>
     <div class="pi-tabs">
       <button class="pi-tabs__btn" id="tpBtn" @click="showTab">Popular</button>
@@ -21,17 +12,12 @@
       <buttton class="pi-tabs__btn" id="saBtn" @click="showTab">Weather</buttton>
       <buttton class="pi-tabs__btn" id="saBtn" @click="showTab">Animals</buttton>
     </div>
-
-    <div class="container">
-      <div v-for="a in unsplashData">
-        <img :src="a.urls.small" class="image-card">
-      </div>
-    </div>
   </div>
 </template>
 
 <style lang="sass">
 @import '../styles/app.sass'
+
 .pi-tabs
   display: flex
   justify-content: center
@@ -58,10 +44,14 @@
 </style>
 
 <script>
+import searchInput from '@/components/searchInput.vue';
 import axios from 'axios'
 
 export default {
-  name: 'landingPage',
+  name: 'home',
+  components: {
+    searchInput
+  },
   data () {
     return {
       unsplashData: [],
@@ -71,26 +61,21 @@ export default {
   },
 
   created () {
-    axios.get('https://api.unsplash.com/photos/?client_id=' + this.clientId).then(response => {
-      this.unsplashData = response.data
-    })
   },
 
   methods: {
     search () {
-      this.unsplashData = null
-      axios.get('https://api.unsplash.com/photos/search/?query=' + this.userInput + '&client_id=' + this.clientId).then(response => {
-        console.log(response.data)
-        this.unsplashData = response.data
-      })
+
     },
 
     showTab (event) {
-      let query = event.currentTarget.textContent
-      this.unsplashData = null
-      axios.get('https://api.unsplash.com/photos/search/?query=' + query + '&client_id=' + this.clientId).then(response => {
-        this.unsplashData = response.data
-      })
+      // let query = event.currentTarget.textContent
+      // this.unsplashData = null
+      // axios.get('https://api.unsplash.com/photos/search/?query=' + query + '&client_id=' + this.clientId).then(response => {
+      //   this.unsplashData = response.data
+      // })
+      window.location.href = '/search-page'
+
     }
   }
 }
