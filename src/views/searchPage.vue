@@ -4,6 +4,7 @@
       <h1>Pre<span style="color: grey;">TT</span>y<span style="font-weight: 400; color: grey;">images</span></h1>
     </div>
     <searchInput></searchInput>
+    <searchResults></searchResults>
   </div>
 </template>
 
@@ -14,12 +15,14 @@
 
 <script>
 import axios from 'axios'
-import searchInput from '@/components/searchInput.vue';
+import searchInput from '@/components/searchInput.vue'
+import searchResults from '@/components/searchResults.vue'
 
 export default {
   name: 'searchPage',
   components: {
-    searchInput
+    searchInput,
+    searchResults
   },
   data () {
     return {

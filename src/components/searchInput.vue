@@ -3,7 +3,7 @@
     <div class="newsletter">
       <input type="text"
       v-model="userInput"
-      id="emailInput"
+      id="userInputId"
       @keyup.enter="search"
       placeholder="Search photos">
       <button @click="search">
@@ -31,12 +31,15 @@ export default {
     };
   },
   methods: {
-    search () {
-      // this.unsplashData = null
+    search (event) {
+      this.unsplashData = null
+
       axios.get('https://api.unsplash.com/photos/search/?query=' + this.userInput + '&client_id=' + this.clientId).then(response => {
-        // console.log(response.data)
-        // this.unsplashData = response.data
         bus.$emit('images', response.data)
+        // window.location.href = '/search-page'
+
+        // if (window.location.pathname === '/')
+
       })
     }
   },

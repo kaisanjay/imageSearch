@@ -7,10 +7,10 @@
       <searchInput></searchInput>
     </div>
     <div class="pi-tabs">
-      <button class="pi-tabs__btn" id="tpBtn" @click="showTab">Popular</button>
-      <buttton class="pi-tabs__btn" id="saBtn" @click="showTab">Nature</buttton>
-      <buttton class="pi-tabs__btn" id="saBtn" @click="showTab">Weather</buttton>
-      <buttton class="pi-tabs__btn" id="saBtn" @click="showTab">Animals</buttton>
+      <button class="pi-tabs__btn" id="popular-Btn" @click="showTab">Popular</button>
+      <button class="pi-tabs__btn" id="saBtn" @click="showTab">Nature</button>
+      <button class="pi-tabs__btn" id="saBtn" @click="showTab">Weather</button>
+      <button class="pi-tabs__btn" id="saBtn" @click="showTab">Animals</button>
     </div>
 
     <searchResults></searchResults>
@@ -36,7 +36,7 @@
     background-color: transparent
     &:hover
       border-bottom: 2px solid #cccccc
-.vw-tabs__active
+.pi-tabs__active
   font-weight: 900
   color: #7F44D3
   border-bottom: 2px solid #7F44D3
@@ -49,6 +49,7 @@
 import searchInput from '@/components/searchInput.vue'
 import searchResults from '@/components/searchResults.vue'
 import axios from 'axios'
+import { bus } from '../main'
 
 export default {
   name: 'home',
@@ -64,7 +65,11 @@ export default {
     }
   },
 
-  created () {
+  mounted () {
+    document.querySelector('#popular-Btn').classList.add('pi-tabs__active')
+    axios.get('https://api.unsplash.com/photos/search/?query=' + 'popular' + '&client_id=' + this.clientId).then(response => {
+      bus.$emit('images', response.data)
+    })
   },
 
   methods: {
@@ -73,12 +78,21 @@ export default {
     },
 
     showTab (event) {
-      // let query = event.currentTarget.textContent
-      // this.unsplashData = null
-      // axios.get('https://api.unsplash.com/photos/search/?query=' + query + '&client_id=' + this.clientId).then(response => {
-      //   this.unsplashData = response.data
-      // })
-      window.location.href = '/search-page'
+      let query = event.currentTarget.textContent
+      this.unsplashData = null
+
+      document.querySelectorAll('.pi-tabs__btn').forEach((el) => {
+          el.classList.remove('pi-tabs__active');
+      })
+
+      event.currentTarget.classList.add('pi-tabs__active')
+
+      axios.get('https://api.unsplash.com/photos/search/?query=' + query + '&client_id=' + this.clientId).then(response => {
+        // console.log(response.data)
+        // this.unsplashData = response.data
+        bus.$emit('images', response.data)
+      })
+      // window.location.href = '/search-page'
 
     }
   }

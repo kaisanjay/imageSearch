@@ -47,27 +47,24 @@ h4
     clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 48%, 85% 49%, 85% 91%, 15% 91%, 15% 51%, 0 51%)
 
 .image-card
-  z-index: 1
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)
+  transition: 0.3s
+  width: max-content
+  // width: 60%
+  border-radius: 5px
   padding: 1rem 3rem
   padding-bottom: 4rem
   margin-top: 2.5rem
-  margin-bottom: 3rem
-  border-radius: 6px
-  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.5)
-  word-wrap: break-word
-  +bp($break-laptop)
-    margin: 3.5rem 0
-    padding: 2rem 2.5rem
-    padding-bottom: 4rem
-  +bp($break-520)
-    margin: 3rem 0
-    padding: 1rem 1.5rem
-    padding-bottom: 4rem
-    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.05)
+  border-top-style: dashed
+  border-width: 2px
+  border-color: $gray-color
+  &:hover
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)
+  &--content
+    margin-top: 2%
 
 .newsletter
   padding-top: 4.5%
-  // width: 50%
   display: flex
   justify-content: center
   input, button
@@ -95,7 +92,7 @@ h4
       color: $theme-color !important
 
 .container
-  margin: 0 30em
+  margin: 0 30%
 
 @keyframes sheen
   100%

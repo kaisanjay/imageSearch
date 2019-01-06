@@ -1,8 +1,13 @@
 <template>
   <div>
-    <div class="row">
-      <div v-for="a in unsplashData">
-        <img :src="a.urls.regular" style="width: 40%;">
+    <div class="container">
+      <div v-for="a in unsplashData" class="image-card">
+        <img :src="a.urls.small">
+        <div class="image-card--content">
+          <h4><b>Photographer:&nbsp;&nbsp;{{ a.user.first_name }}</b></h4>
+          <p><b>Total likes:</b>&nbsp;&nbsp;{{ a.user.total_likes }}</p>
+          <p><b>Location:</b>&nbsp;&nbsp;{{ a.user.location }}</p>
+        </div>
       </div>
     </div>
   </div>
