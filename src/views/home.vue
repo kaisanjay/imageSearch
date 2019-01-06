@@ -12,6 +12,8 @@
       <buttton class="pi-tabs__btn" id="saBtn" @click="showTab">Weather</buttton>
       <buttton class="pi-tabs__btn" id="saBtn" @click="showTab">Animals</buttton>
     </div>
+
+    <searchResults></searchResults>
   </div>
 </template>
 
@@ -44,13 +46,15 @@
 </style>
 
 <script>
-import searchInput from '@/components/searchInput.vue';
+import searchInput from '@/components/searchInput.vue'
+import searchResults from '@/components/searchResults.vue'
 import axios from 'axios'
 
 export default {
   name: 'home',
   components: {
-    searchInput
+    searchInput,
+    searchResults
   },
   data () {
     return {

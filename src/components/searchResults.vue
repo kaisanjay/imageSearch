@@ -14,11 +14,22 @@
 </style>
 
 <script>
+import { bus } from '../main'
+
 export default {
   name: 'serchResults',
   data() {
     return {
+        unsplashData: null
     };
+  },
+
+  created () {
+    let gthis = this
+    bus.$on('images', (data) => {
+      console.log(data, 'sanjay')
+      gthis.unsplashData = data
+    })
   },
   methods: {},
   components: {},
