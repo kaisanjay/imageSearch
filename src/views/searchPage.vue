@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="landingPage--title shinyBtn" onclick="window.location='/'">
-      <h1>Pre<span style="color: grey;">TT</span>y<span style="font-weight: 400; color: grey;">images</span></h1>
-    </div>
+    <homeIcon></homeIcon>
     <searchInput></searchInput>
     <searchResults></searchResults>
   </div>
@@ -15,6 +13,7 @@
 
 <script>
 import axios from 'axios'
+import homeIcon from '@/components/homeIcon.vue'
 import searchInput from '@/components/searchInput.vue'
 import searchResults from '@/components/searchResults.vue'
 
@@ -22,7 +21,8 @@ export default {
   name: 'searchPage',
   components: {
     searchInput,
-    searchResults
+    searchResults,
+    homeIcon
   },
   data () {
     return {

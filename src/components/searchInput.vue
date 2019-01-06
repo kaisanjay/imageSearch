@@ -7,7 +7,7 @@
       @keyup.enter="search"
       placeholder="Search photos">
       <button @click="search">
-        Sign Up
+        Search
       </button>
     </div>
   </div>
