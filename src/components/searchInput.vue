@@ -36,10 +36,6 @@ export default {
 
       axios.get('https://api.unsplash.com/photos/search/?query=' + this.userInput + '&client_id=' + this.clientId).then( response => {
         bus.$emit('images', response.data)
-        // window.location.href = '/search-page'
-
-        // if (window.location.pathname === '/')
-
       })
     }
   },

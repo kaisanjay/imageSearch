@@ -9,9 +9,10 @@
           <p><b>Location:</b>&nbsp;&nbsp;{{ a.user.location }}</p>
         </div>
       </div>
-      <div v-if="unsplashData.length === 0">
-        <h4 style="text-align: center;"><b>No Results Found</b></h4>
-      </div>
+    </div>
+
+    <div v-if="noResults">
+      <h4 style="text-align: center;"><b>{{ noResults }}</b></h4>
     </div>
   </div>
 </template>
@@ -28,7 +29,8 @@ export default {
   name: 'serchResults',
   data() {
     return {
-        unsplashData: null
+        unsplashData: null,
+        noResults: null
     };
   },
 
@@ -36,9 +38,9 @@ export default {
     let gthis = this
     bus.$on('images', (data) => {
       gthis.unsplashData = data
+      if (data.length === 0)
+        this.noResults = 'No Results Found'
     })
   },
-  methods: {},
-  components: {},
 };
 </script>
